@@ -1,0 +1,34 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="project-detail">
+    <form action="{% url 'projects:edit' slug=project.slug%}" method="post">
+        {% csrf_token %}
+        <input  class="btn btn-outline-secondary" type="submit" name="project_edit" value="Edit" ></input>
+        
+    </form>
+    <div class="project">
+        <img src="{{project.thumb.url}}"/>
+        <h2>{{project.title}}</h2>
+        <p>{{project.descrtion}}</p>
+        <p>{{project.published}}</p>
+        {% if project.thumb2 %} 
+        <img src="{{project.thumb1.url}}"/>
+        {% endif %}
+        {% if project.thumb2 %}
+        <img src="{{project.thumb2.url}}"/>
+        {% endif %}
+        {% if project.thumb3 %}
+        <img src="{{project.thumb3.url}}"/>
+        {% endif %}
+
+        
+        
+        
+
+    </div>
+
+</div>
+
+{% endblock %}

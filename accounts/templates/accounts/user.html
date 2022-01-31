@@ -1,0 +1,49 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<h3>User Profile</h3>
+<link href="{% static '/css/user.css'  %}" rel="stylesheet" type="text/css">
+<div>
+    <div>
+        <div>
+            <a  href="{%  url 'homes' %}"> Back Home </a>
+            <hr>
+            <h3>Account Settings</h3>
+            <hr>
+            <img class="profile-pic" src="{{request.user.visit.profile_pic.url}}">
+            <h4>Informations</h4>
+            <br>
+            <div class="text">First Name</div>
+            <div>{{request.user.visit.firstname}}</div>
+            <br>
+            <div class="text">Last Name</div>
+            <div>{{request.user.visit.lastname}}</div>
+            <br>
+            <div class="text">Phone             
+            </div>
+            <div>{{request.user.visit.phone}}</div>
+            <br>
+            <div class="text">E-Mail</div>
+            <div>{{request.user.visit.email}}</div>
+            <br>
+            <div class="text">Register date</div>
+            <div>{{request.user.visit.date_create}}</div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <h4>Modify Informations</h4>
+    <div>
+        <div>
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" name="Update" value="Update">
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}

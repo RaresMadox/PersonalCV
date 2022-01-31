@@ -1,0 +1,15 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+        <h1>Project List </h1>
+        {% if user.is_superuser %}
+        <div><a href="{% url 'projects:create' %}"> Add new project </a></div>
+        {% endif %}
+
+        {% for project in projects %}
+            <div class="projects">
+                <h2> <a href="{% url 'projects:detail' slug=project.slug %}"> {{project.title}}</a> </h2>
+                <p>{{project.published}}</p>
+            </div>    
+        {% endfor %}
+{% endblock %}

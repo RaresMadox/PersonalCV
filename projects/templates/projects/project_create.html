@@ -1,0 +1,42 @@
+{% extends 'navbar.html' %}
+
+{% load static %}
+{% block content %}
+<div class="create-project">
+    <h2>Add a new project</h2>
+    <form method="POST" action="" >
+        {% csrf_token %}
+    {{form.title.label}}
+    {{form.title}}
+    <br>
+    {{form.descrtion.label}}
+    <br>
+    {{form.descrtion}}
+    <br>
+    {{form.slug.label}}
+    {{form.slug}}
+    <br>
+    {{form.thumb.label}}
+    {{form.thumb}}
+    <br>
+    {{form.thumb1.label}}
+    {{form.thumb1}}
+    <br>
+    {{form.thumb2.label}}
+    {{form.thumb2}}
+    <br>
+    {{form.thumb3.label}}
+    {{form.thumb3}}
+    <br>
+    {{form.category.label}}
+    {{form.category}}
+    <br>
+   <p>Choose tags for project:</p>
+    
+    {{form.tags.label}}
+    {{form.tags}}
+    <br>
+    <input type="submit" value="Public project">
+    </form>
+</div>
+{% endblock %}

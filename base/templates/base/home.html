@@ -1,0 +1,113 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3" id="profile-wrapper">
+            <div class="card card-body">
+              <img id="profile-pic" src="{% static 'images/profile1.jpg' %}">  
+              <hr>
+              <h4>Hi, I'm Rares</h4>
+              <p>I am passionate about artificial intelligence and web dev</p>
+            </div>
+        </div>
+        <div class="col-md-9" id="case"> 
+            <div class="card card-body">
+                <h1 >Studies:</h1>
+                <hr>
+                <p>I graduated from the Faculty of Electronics, 
+                    Telecommunications and Information Technology at 
+                    the Polytechnic University of Bucharest. And at the 
+                    moment I am studying "Financial computing" within the 
+                    master's program at 
+                    the Faculty of Automation and Computers within UPB. </p>
+            </div> 
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body" id="case">
+                <h1>Projects: </h1>
+                <hr>
+                <p>  The field in which I develop my 
+                    personal projects are related to 
+                    the field of Machine Learning and computer
+                     vision and in the field of Web Development. 
+                     I try that in the future, with the development 
+                     in these two fields, I can combine these two fields by
+                      developing complex applications. The vast majority of 
+                      projects and applications are written 
+                    and integrated using the Python programming language.</p>
+            </div>
+        </div>
+        <div class="col-md-6"> 
+            <div class="card card-body" id="case"><h1>Skills</h1>
+            <hr>
+            <p1>PHP ||
+                Python || 
+                MySql ||
+                Java ||
+                JDBC ||
+                Tkinter ||
+                OpenCV ||
+                C/C++ || 
+                Matlab ||
+                Javascript ||
+                CSS ||
+                Photoshop ||
+                Assembly ||
+                HTML || Django</p1>
+        </div> 
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            {% if user.is_authenticated %}
+            <div class="card card-body" name="tags"><h1>Tags</h1><hr>
+                {% for each in Tags %}
+                                        
+                {% csrf_token %}
+                        <div class="Tags">
+                            <form action="{% url 'search_tag' %}" method="post">
+                                {% csrf_token %}
+                                <input  class="btn btn-outline-secondary" type="submit" name="tag_src" value="{{each.name}}" />
+                            </form>
+                        </div>
+               
+                {% endfor %}
+
+                
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6"> 
+            {% if user.is_authenticated %}
+            <div class="card card-body">
+               
+                <div class="card card-body" name="categ"><h1>Category</h1><hr>
+                    
+                    {% for each in Category %}
+                        {% csrf_token %}
+                        <div class="Category">
+                            <form action="{% url 'search_category' %}" method="post">
+                                {% csrf_token %}
+                                <input  class="btn btn-outline-secondary" type="submit" name="category_src" value="{{each.category}}" />
+                                
+                            </form>
+                        </div>
+                            
+                    {% endfor %}
+    
+                    
+                </div>
+                {% endif %}
+                
+        </div>
+    </div>
+    <br>
+    </div>
+ 
+    {% endblock %}

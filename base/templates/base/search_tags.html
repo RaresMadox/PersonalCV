@@ -1,0 +1,20 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+<center>
+    
+    
+    <h1>You searched for #{{ tag_src }} </h1>
+    <br/>
+    {% for each in result %}
+    
+        <a href="{% url 'projects:detail' slug=each.slug %}">{{each}}</a>-{{each.published}}<br/>
+
+    {% endfor %}
+   
+    
+    
+</center>
+
+{% endblock %}

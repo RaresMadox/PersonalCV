@@ -1,0 +1,38 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<h3 >LOGIN</h3>
+				</div>
+				<div>
+					<form method="POST" action="">
+                        {% csrf_token %}
+						<div >
+							<input type="text" name="username" placeholder="Username..." >
+						</div>
+						<div >						
+							<input type="password" name="password" placeholder="Password..."  >
+						</div>
+
+							<div >
+				 				<input type="submit" value="Login">
+				   			</div>
+					</form>
+
+				</div>
+				
+				<div >
+					<div >
+						Don't have an account? <a href="{% url 'accounts:register' %}" class="ml-2">Sign Up</a>
+					</div>
+<div>
+<br>
+	<div >
+		<div >
+			Forgotten your password?  <a href="{% url 'accounts:reset_password' %}" class="ml-2">Reset Password</a>
+		</div>
+<div>
+    {% for message in messages %}
+        <p id="message">{{message}}</p>
+    {% endfor %}
+</div>
+{% endblock %}

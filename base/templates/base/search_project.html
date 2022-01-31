@@ -1,0 +1,23 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+<center>
+    {% if searched %}
+
+    <h1>You searched for {{ searched }} </h1>
+    <br/>
+    {% for each in result %}
+    
+        <a href="{% url 'projects:detail' slug=each.slug %}">{{each}}</a>-{{each.published}}<br/>
+
+    {% endfor %}
+    {% else %}
+
+    <h1>You forgot to search a project</h1>
+    
+    {% endif %}
+    
+</center>
+
+{% endblock %}
